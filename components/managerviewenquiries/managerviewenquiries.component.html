@@ -1,0 +1,51 @@
+<!-- <div class="container">
+    <h2>User Enquiries</h2>
+    <div>
+        <input type="text" name="fMessage" id="fMessage" placeholder="search" #fMessage (input)="filterByMessage(fMessage.value)">
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <th>S.No</th>
+            <th>Enquiry Message</th>
+            <th>Action</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of enquiries;index as i">
+                <td>{{i+1}}</td>
+                <td>{{e.message}}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="showUserProfile(e.user)">View Profile</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+ 
+ 
+<div class="container">
+    <h2>User Enquiries</h2>
+    <div>
+        <input type="text" name="fMessage" id="fMessage" placeholder="search" #fMessage (input)="filterByMessage(fMessage.value)">
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <th>S.No</th>
+            <th>Enquiry Message</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of paginatedEnquiries; index as i">
+                <td>{{i + 1 + (currentPage - 1) * itemsPerPage}}</td>
+                <td>{{e.message}}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="showUserProfile(e.user)">View Profile</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="pagination">
+        <button (click)="setPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+        <button (click)="setPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+    </div>
+</div>

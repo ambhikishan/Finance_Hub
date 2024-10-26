@@ -1,0 +1,13 @@
+<div class="container">
+    <h2>Edit User Enquiry</h2>
+    <form [formGroup]="enquiryForm" (ngSubmit)="updateEnquiry()">
+        <label for="message">Enquiry Message:</label><br>
+        <textarea name="message" cols="40" rows="10" formControlName="message"></textarea><br>
+        <!-- <label for="status">Status</label><br> -->
+        <!-- <select name="status" id="status">
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+        </select><br> -->
+        <button class="btn btn-success" type="submit">Update Enquiry</button>
+    </form>
+</div> 

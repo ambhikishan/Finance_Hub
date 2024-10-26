@@ -1,0 +1,38 @@
+<div class="container">
+    <h2>Plan Application Form</h2>
+    <form [formGroup]="planForm" (ngSubmit)="addPlanApplicationForm()">
+ 
+        <div>
+            <label for="savingsPlan">Selected Savings Plan</label>
+            <input formControlName="savingsPlan" name="savingsPlan" [ngModel]="savingsPlanObj.name" disabled>  
+        </div>
+        <div>
+            <label for="appliedAmount">Applied Amount (per month)</label>
+            <input type="text" formControlName="appliedAmount" name="appliedAmount" [ngModel]="amount" disabled >
+            <div *ngIf="appliedAmount.invalid && appliedAmount.touched">
+                <small *ngIf="appliedAmount.errors.required">Applied Amount is required</small>
+            </div>
+        </div>
+        <div>
+            <label for="remarks">Remarks</label>
+            <input type="text" formControlName="remarks" name="remarks">
+            <div *ngIf="remarks.invalid && remarks.touched">
+                <small *ngIf="remarks.errors.required">Remarks is required</small>
+            </div>
+        </div>
+        <div>
+            <label for="proofOfDocument">Proof of document (.pdf format only)</label>
+            <input type="file" (change)="onFileSelected($event)" name="proofOfDocument" accept=".pdf">
+            <div *ngIf="planForm.get('proofOfDocument')?.invalid && planForm.get('proofOfDocument')?.touched">
+                <small *ngIf="planForm.get('proofOfDocument')?.errors?.required">Proof of Document is required</small>
+            </div>
+            <div *ngIf="fileError">
+                {{ fileError }}
+            </div>
+        </div>
+        <div>
+            <button type="submit" [disabled]="planForm.invalid">Submit</button>
+        </div>
+       
+    </form>
+</div>

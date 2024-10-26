@@ -1,0 +1,8 @@
+<div class="container">
+  <h2>Add Enquiry</h2>
+  <form [formGroup]="enquiryForm" (ngSubmit)="addEnquiry()">
+    <label for="message">Message</label><br>
+    <textarea formControlName="message" cols="40" rows="10"></textarea><br>
+    <button class="btn btn-primary" type="submit">Add Enquiry</button>
+  </form>
+</div>

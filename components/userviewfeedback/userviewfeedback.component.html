@@ -1,0 +1,31 @@
+<div class="container" >
+    <h2>My Feedback</h2>
+</div>
+<div class="container"  *ngIf="!delPopup" >
+    <table class="table table-striped">
+        <thead >
+            <th>S.No</th>
+            <th>Feedback</th>
+            <th>Plan Name</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let f of viewfeedback; index as i; let p of planNames">
+                <td>{{i+1}}</td>
+                <td>{{f.feedbackText}}</td>
+                <td>{{f.planName}}</td>
+                <td>
+                    <button type="submit" (click)="confirmDelete(f.feedbackId)" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </tbody>            
+    </table>
+</div>
+<div *ngIf="delPopup" class="popup">
+    <div class="popup-content">
+        <span class="close" (click)="closeDel()">&times;</span>
+        <h2>Are you sure you want to delete?</h2>
+        <button (click)="deleteFeedback()" class="btn btn-danger">Yes,Delete</button>
+        <button (click)="closeDel()" class="btn btn-primary">Cancel</button>
+    </div>
+</div>

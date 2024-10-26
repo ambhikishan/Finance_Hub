@@ -1,0 +1,19 @@
+<div class="nav-container">
+    <div class="logo">
+        <a style="cursor: pointer;">FINANCEHUB</a>
+    </div>
+    <div class="menu">
+        <a style="cursor: pointer; padding-right: 20px;" routerLink="/home">Home</a>
+        <div class="dropdown">
+            <a style="cursor: pointer; padding-right: 20px;" class="dropbtn">SavingsPlan</a>
+            <div class="dropdown-content">
+                <a routerLink="/addsavingplan">Add SavingPlan</a>
+                <a routerLink="/viewsavingplan">View SavingPlan</a>
+            </div>
+        </div>
+        <a style="cursor: pointer; padding-right: 20px;" routerLink="/managerviewapplications">RequestedApplicationForms</a>
+        <a style="cursor: pointer; padding-right: 40px;" routerLink="/requestedenquiries">RequestedEnquiries</a>
+        <a style="cursor: pointer; padding-right: 20px;" routerLink="/managerviewfeedbacks">Feedbacks</a>
+        <button style="background-color: red; color: white;" (click)="logout()">Logout</button>
+    </div>
+</div>

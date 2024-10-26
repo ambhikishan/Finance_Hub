@@ -1,0 +1,39 @@
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>S. No</th>
+        <th>Plan Name</th>
+        <th>Goal Amount</th>
+        <th>Time Frame (Years)</th>
+        <th>Risk Level</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let savingsPlan of savingsPlans | paginate: {itemsPerPage: 2, currentPage: p};index as i">
+        <td>{{i+1}}</td>
+        <td>{{savingsPlan.name}}</td>
+        <td>{{savingsPlan.goalAmount}}</td>
+        <td>{{savingsPlan.timeFrame}}</td>
+        <td>{{savingsPlan.riskLevel}}</td>
+        <td>{{savingsPlan.description}}</td>
+        <td>{{savingsPlan.status}}</td>
+        <td><button class="btn btn-primary" [routerLink]="['/managereditsavingsplan',savingsPlan.savingsPlanId]" >Edit</button></td>
+        <td><button class="btn btn-danger" (click)="confirmDelete(savingsPlan)" [disabled]="showMessage">Delete</button></td>
+ 
+      </tr>
+    </tbody>
+  </table>
+<!-- <div *ngIf="showMessage">
+   <h2>Confirm Deletion</h2>
+<p>Are you sure you want to delete this savings plan?</p>
+    <button (click)="deleteSavingsPlan(savingsPlan.savingsPlanId)">Yes</button>
+    <button (click)="clickNo()">No</button>
+
+</div> -->
+</div>
+<!-- <router-outlet></router-outlet> -->
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

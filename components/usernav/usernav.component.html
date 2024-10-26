@@ -1,0 +1,33 @@
+<div class="nav-container">
+    <div class="logo">
+        <a style="cursor: pointer;">FINANCEHUB</a>
+    </div>
+    <div class="menu">
+        <a style="cursor: pointer; padding-right: 20px;" routerLink="/home">Home</a>
+        <div class="dropdown">
+            <a style="cursor: pointer; padding-right: 20px;">SavingsPlan</a>
+            <div class="dropdown-content">
+                <!-- <a routerLink="/addsavingplan">Add Saving Plan</a> -->
+                <a routerLink="/userviewsavingsplan">View Saving Plan</a>
+            </div>
+        </div>
+        <a style="cursor: pointer; padding-right: 20px;" routerLink="/userappliedplans">AppliedPlans</a>
+        <div class="dropdown">
+            <a style="cursor: pointer; padding-right: 20px;">Enquiry</a>
+            <div class="dropdown-content">
+                <a routerLink="/useraddEnquiry">Add Enquiry</a>
+                <a routerLink="/userviewEnquiry">My Enquiry</a>
+            </div>
+        </div>
+       
+        <div class="dropdown">
+            <a style="cursor: pointer; padding-right: 20px;">FeedBack</a>
+            <div class="dropdown-content">
+                <a routerLink="/useraddFeedback">Add Feedback</a>
+                <a routerLink="/userviewfeedback">My Feedbacks</a>
+            </div>
+        </div>
+        
+        <button (click)="logout()">LogOut</button>
+    </div>
+</div>

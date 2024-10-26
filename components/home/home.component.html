@@ -1,0 +1,83 @@
+<header>
+  <div class="container">
+    <h1></h1>
+      <nav>
+          <ul>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#contact">Contact</a></li>
+          </ul>
+      </nav>
+  </div>
+</header>
+<section id="home" class="hero">
+  <div class="carousel">
+      <div class="carousel-inner">
+          <div class="carousel-item" *ngFor="let image of images; let i = index" [class.active]="i === currentIndex">
+              <img [src]="image" alt="FinanceHub Image">
+          </div>
+      </div>
+      <button class="carousel-control prev" (click)="prev()">❮</button>
+      <button class="carousel-control next" (click)="next()">❯</button>
+  </div>
+  <div class="welcome-message" id="welcomeMessage">Welcome to FinanceHub!</div>
+</section>
+<div class="columns">
+  <div class="column">
+      <h2>Regional Managers</h2>
+      <p>Monitor regional performance, allocate budgets, and ensure compliance with financial policies.</p>
+  </div>
+  <div class="column">
+      <h2>Customers</h2>
+      <p>Access account details, payment history, and real-time financial updates.</p>
+  </div>
+</div>
+<section id="small-images" class="small-images">
+  <div class="small-image">
+      <img src="assets/img 4.jpeg" alt="Small Image 1">
+  </div>
+  <div class="small-image">
+      <img src="assets/logo.png" alt="Small Image 2">
+  </div>
+  <div class="small-image">
+      <img src="assets/img6.jpg" alt="Small Image 3">
+  </div>
+</section>
+<section id="services">
+  <div class="column">
+      <h2>Services</h2>
+      <p>We offer a wide range of services designed to streamline financial operations:</p>
+      <ul>
+          <li>Comprehensive financial tracking and reporting</li>
+          <li>Budget allocation and management</li>
+          <li>Real-time financial updates and notifications</li>
+          <li>Personalized financial insights and recommendations</li>
+          <li>Secure access to account details and payment history</li>
+      </ul>
+  </div>
+</section>
+<section id="contact">
+  <div class="column">
+      <h2>Contact</h2>
+      <p>We'd love to hear from you! Reach out to us through any of the following channels:</p>
+      <ul>
+          <li>Email: <a href="mailto:support@financehub.com">support@financehub.com</a></li>
+          <li>Instagram: <a href="https://instagram.com/financehub">@financehub</a></li>
+          <li>WhatsApp: <a href="https://wa.me/1234567890">+1 234 567 890</a></li>
+      </ul>
+  </div>
+</section>
+<section id="about">
+  <div class="column">
+      <h2>About Us</h2>
+      <div class="about">
+          <h2>Your Trusted Financial Solution Platform</h2>
+          <p>Discover comprehensive and innovative financial solutions tailored to your unique needs.</p>
+      </div>
+  </div>
+</section>
+<footer>
+  <div class="container">
+      <p>© 2024 FinanceHub. All rights reserved.</p>
+  </div>
+</footer>

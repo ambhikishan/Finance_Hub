@@ -1,0 +1,128 @@
+button {
+  padding: 10px;
+  margin: 5px;
+  width: 150px; /* Uniform width for all buttons */
+  border: none;
+  cursor: pointer;
+  text-align: center; /* Center the text */
+  transition: background-color 0.3s, transform 0.3s;
+}
+ 
+.edit-button {
+  background-color: #008080;
+  transform: scale(1.1);
+}
+ 
+.edit-button:hover,.save-button:hover,.yes-button:hover {
+ 
+  background-color: #4CAF50;
+  color: white;
+}
+ 
+.delete-button {
+  background-color: #008080;
+  transform: scale(1.1);
+}
+ 
+.delete-button:hover,.cancel-button:hover,.no-button:hover {
+  background-color: #f44336;
+  color: white;
+}
+ 
+.save-button, .cancel-button, .yes-button, .no-button,.prev-button,.next-button{
+  width: 100px; /* Smaller width for these buttons */
+  margin-right: 10px; /* Gap between buttons */
+  background-color: #008080;
+  transform: scale(1.1);
+}
+ 
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+}
+ 
+thead th {
+  background-color: #008080;
+  color: white;
+  padding: 12px 15px;
+  cursor: pointer;
+}
+ 
+tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+ 
+tbody tr:nth-of-type(odd) {
+  background-color: #ffffff;
+}
+ 
+td {
+  padding: 12px 15px;
+}
+ 
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+ 
+table, th, td {
+  border: 1px solid #ddd;
+}
+ 
+/* Filter Styling */
+.filters label {
+  margin-right: 20px;
+}
+ 
+.filters span {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+ 
+/* Pop-up Styling */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+ 
+.edit-popup, .delete-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+ 
+.edit-popup h3, .delete-popup h3 {
+  margin-top: 0;
+}
+ 
+.edit-popup button, .delete-popup button {
+  margin-top: 10px;
+}
+/* Add this to your existing CSS for sorting icons */
+thead th span.asc::after {
+  content: ' ▲';
+}
+ 
+thead th span.desc::after {
+  content: ' ▼';
+}
+
+.edit-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;  /* Optional: makes it look more disabled */
+}

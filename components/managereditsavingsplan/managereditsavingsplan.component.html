@@ -1,0 +1,64 @@
+<div class="container">
+    <h1>Edit Savings Plan</h1>
+    <form [formGroup]="form" (ngSubmit)="updateSavingsPlan()">
+    <div class="form-group">
+        <label for="name">Plan Name: <span style="color:red">*</span></label>
+        <input formControlName="name" type="text" name="name" id="name" class="form-control">
+        <div *ngIf="name.invalid&&name.touched">
+        <div *ngIf="name.errors['required']" style="color:red">*Plan Name is required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="goalAmount">Goal Amount: <span style="color:red">*</span></label>
+        <input formControlName="goalAmount" type="number" name="goalAmount" id="goalAmount" class="form-control">
+        <div *ngIf="goalAmount.invalid&&goalAmount.touched">
+        <div *ngIf="goalAmount.errors['required']" style="color:red">*Goal Amount is required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="timeFrame">Time Frame: (Years) <span style="color:red">*</span></label>
+        <input formControlName="timeFrame" type="number" name="timeFrame" id="timeFrame" class="form-control">
+        <div *ngIf="timeFrame.invalid&&timeFrame.touched">
+        <div *ngIf="timeFrame.errors['required']" style="color:red">*Time Frame is required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="riskLevel">Risk Level: <span style="color:red">*</span></label>
+        <select formControlName="riskLevel" type="text" name="riskLevel" id="riskLevel" class="form-control">
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+        </select>
+        <div *ngIf="riskLevel.invalid&&riskLevel.touched">
+        <div *ngIf="riskLevel.errors['required']" style="color:red">*Risk Level is required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description: <span style="color:red">*</span></label>
+        <input formControlName="description" type="text" name="description" id="description" class="form-control">
+        <div *ngIf="description.invalid&&description.touched">
+        <div *ngIf="description.errors['required']" style="color:red">*Description is required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="status">Status: <span style="color:red">*</span></label>
+        <input formControlName="status" type="text" name="status" id="status" class="form-control">
+        <div *ngIf="status.invalid&&status.touched">
+        <div *ngIf="status.errors['required']" style="color:red">*Status is required</div>
+        </div>
+    </div>
+    <br>
+    <button class="btn btn-primary" type="submit">Submit</button>
+
+</form>
+<div *ngIf="showMessage">
+    Succesfully edited
+    <button (click)="onClick()">OK</button>
+</div>
+
+</div>

@@ -1,0 +1,64 @@
+<div class="container">
+  <h2>Requested Application Forms</h2>
+  <div class="filters">
+    <label>
+      <span>Plan Name:</span>
+      <input type="text" [(ngModel)]="filters.planName" (ngModelChange)="filterTable()" placeholder="Search PlanName"/>
+    </label>
+    <label>
+      <span>Applied Amount:</span>
+      <input type="text" [(ngModel)]="filters.appliedAmount" (ngModelChange)="filterTable()" placeholder="Search Amount"/>
+    </label>
+    <label>
+      <span>Application Date:</span>
+      <input type="text" [(ngModel)]="filters.applicationDate" (ngModelChange)="filterTable()" placeholder="Search Date"/>
+    </label>
+    <label>
+      <span>Status:</span>
+      <input type="text" [(ngModel)]="filters.status" (ngModelChange)="filterTable()" placeholder="Search Status"/>
+    </label>
+  </div>
+  <table border="2px">
+    <thead>
+      <tr>
+        <th (click)="sortTable('sno')">S.No <span [ngClass]="getSortClass('sno')"></span></th>
+<th (click)="sortTable('applicantName')">Applicant Name <span [ngClass]="getSortClass('applicantName')"></span></th>
+<th (click)="sortTable('planName')">Plan Name <span [ngClass]="getSortClass('planName')"></span></th>
+<th (click)="sortTable('appliedAmount')">Applied Amount <span [ngClass]="getSortClass('appliedAmount')"></span></th>
+<th (click)="sortTable('applicationDate')">Application Date <span [ngClass]="getSortClass('applicationDate')"></span></th>
+<th (click)="sortTable('remarks')">Remarks <span [ngClass]="getSortClass('remarks')"></span></th>
+<th (click)="sortTable('status')">Status <span [ngClass]="getSortClass('status')"></span></th>
+
+        <th>Proof of document</th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let planApplication of displayedApplications; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ planApplication.user.username }}</td>
+        <td>{{ planApplication.savingsPlan.name }}</td>
+        <td>{{ planApplication.appliedAmount }}</td>
+        <td>{{ planApplication.applicationDate }}</td>
+        <td>{{ planApplication.remarks }}</td>
+        <td>
+          <div *ngIf="planApplication.status === 'pending'">
+            <button class="approve-button" (click)="approve(planApplication)">Approve</button>
+            <button class="reject-button" (click)="reject(planApplication)">Reject</button>
+          </div>
+          <div *ngIf="planApplication.status !='pending'">
+            {{ planApplication.status }}
+          </div>
+        </td>
+        <td>
+          <a [href]="getDocumentUrl(planApplication.proofOfDocument)" download="document">Download</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <button (click)="prevPage()" [disabled]="currentPage === 0" class="prev-button" >Previous</button>
+    <button (click)="nextPage()" [disabled]="currentPage >= totalPages - 1" class="next-button" >Next</button>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>Available Savings Plan</h1>
+  <div class="form-group">
+      <label for="fname"></label>
+      <input #fname type="text" name="fname" id="fname" class="form-control" placeholder="Search" (input)="filterByName(fname.value)">
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>S. No</th>
+        <th>Plan Name</th>
+        <th>Goal Amount</th>
+        <th>Time Frame (Years)</th>
+        <th>Risk Level</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let savingsPlan of savingsPlans | paginate: {itemsPerPage: 2, currentPage: p};index as i">
+        <td>{{i+1}}</td>
+        <td  >{{savingsPlan.name}}</td>
+        <td>{{savingsPlan.goalAmount}}</td>
+        <td>{{savingsPlan.timeFrame}}</td>
+        <td>{{savingsPlan.riskLevel}}</td>
+        <td>{{savingsPlan.description}}</td>
+        <td>{{savingsPlan.status}}</td>
+        <td><button class="btn btn-primary" [routerLink]="['/userplanapplication',savingsPlan.savingsPlanId]" [disabled]="savingsPlan.status=='inactive'" >Apply</button></td>
+      
+ 
+      </tr>
+    </tbody>
+  </table>
+</div>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

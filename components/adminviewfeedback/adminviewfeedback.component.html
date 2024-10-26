@@ -1,0 +1,34 @@
+<div class="container" *ngIf="!showPopup">
+    <h2>Feedback Details</h2>
+    <table class="table table-striped">
+        <thead>
+            <th>S.No</th>
+            <th>User Name</th>
+            <th>Feedback</th>
+            <th>Plan name</th>
+            <th>Posted Date</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let f of feedbacks;index as i">
+                <td>{{i+1}}</td>
+                <td>{{f.user.username}}</td>
+                <td>{{f.feedbackText}}</td>
+                <td>{{f.planName}}</td>
+                <td>{{f.date}}</td>
+                <td>
+                    <button type="submit" class="btn btn-primary" (click)="showUserProfile(f.user)">Show Profile</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div *ngIf="showPopup" class="popup">
+    <div class="popup-content">
+        <h2>User Details:</h2>
+        <p><b>Email:</b> {{selectedUser.email}}</p>
+        <p><b>User Name:</b> {{selectedUser.username}}</p>
+        <p><b>Mobile Number:</b> {{selectedUser.mobileNumber}}</p>
+        <button type="submit" class="btn btn-primary" (click)="closePopup()">Close</button>
+    </div>
+</div>

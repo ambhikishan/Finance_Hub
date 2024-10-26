@@ -1,0 +1,84 @@
+<div class="container">
+  <h2>Applied Forms</h2>
+  <div class="filters">
+    <label>
+      <span>Plan Name:</span>
+      <input type="text" [(ngModel)]="filters.planName" (ngModelChange)="filterTable()" />
+    </label>
+    <label>
+      <span>Applied Amount:</span>
+      <input type="text" [(ngModel)]="filters.appliedAmount" (ngModelChange)="filterTable()" />
+    </label>
+    <label>
+      <span>Application Date:</span>
+      <input type="text" [(ngModel)]="filters.applicationDate" (ngModelChange)="filterTable()" />
+    </label>
+    <label>
+      <span>Status:</span>
+      <input type="text" [(ngModel)]="filters.status" (ngModelChange)="filterTable()" />
+    </label>
+  </div>
+  <table border="2px">
+    <thead>
+      <tr>
+        <th (click)="sortTable('sno')">S.No <span [ngClass]="getSortClass('sno')"></span></th>
+<th (click)="sortTable('planName')">Plan Name <span [ngClass]="getSortClass('planName')"></span></th>
+<th (click)="sortTable('appliedAmount')">Applied Amount <span [ngClass]="getSortClass('appliedAmount')"></span></th>
+<th (click)="sortTable('applicationDate')">Application Date <span [ngClass]="getSortClass('applicationDate')"></span></th>
+<th (click)="sortTable('remarks')">Remarks <span [ngClass]="getSortClass('remarks')"></span></th>
+<th (click)="sortTable('status')">Status <span [ngClass]="getSortClass('status')"></span></th>
+        <th>Proof of document</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let planApplication of displayedApplications; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ planApplication.savingsPlan.name }}</td>
+        <td>{{ planApplication.appliedAmount }}</td>
+        <td>{{ planApplication.applicationDate }}</td>
+        <td>{{ planApplication.remarks }}</td>
+        <td>{{ planApplication.status }}</td>
+        <td>
+          <a [href]="getDocumentUrl(planApplication.proofOfDocument)" download="document">Download</a>
+        </td>
+        <td>
+          <!-- <button class="edit-button" (click)="openEditPopup(planApplication.planApplicationId, planApplication)" [disabled]="planApplication.status !== 'pending'">Edit</button> -->
+          <button class="delete-button" (click)="confirmDelete(planApplication.planApplicationId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <button (click)="prevPage()" [disabled]="currentPage === 0" class="prev-button" >Previous</button>
+    <button (click)="nextPage()" [disabled]="currentPage >= totalPages - 1" class="next-button" >Next</button>
+  </div>
+</div>
+ 
+<!-- Overlay -->
+<div *ngIf="isEditPopupOpen || isDeletePopupOpen" class="overlay" (click)="closePopups()"></div>
+ 
+<!-- Edit Popup -->
+<!-- <div *ngIf="isEditPopupOpen" class="edit-popup">
+  <h3>Edit Plan</h3>
+  <form (ngSubmit)="saveChanges()">
+    <label for="savingsPlan">Plan Name:</label>
+    <input id="savingsPlan" [(ngModel)]="selectedPlan.savingsPlan.name" name="savingsPlan" required disabled>
+    <label for="appliedAmount">Applied Amount:</label>
+    <input id="appliedAmount" [(ngModel)]="selectedPlan.appliedAmount" name="appliedAmount" required disabled>
+    <label for="applicationDate">Application Date:</label>
+    <input id="applicationDate" [(ngModel)]="selectedPlan.applicationDate" name="applicationDate" required>
+    <label for="remarks">Remarks:</label>
+    <input id="remarks" [(ngModel)]="selectedPlan.remarks" name="remarks">
+    <button type="submit" class="save-button" (click)="saveChanges()">Save</button>
+    <button type="button" class="cancel-button" (click)="closeEditPopup()">Cancel</button>
+  </form>
+</div> -->
+ 
+<!-- Delete Confirmation Popup -->
+<div *ngIf="isDeletePopupOpen" class="delete-popup">
+  <h3>Are you sure you want to delete this item?</h3>
+  <button class="yes-button" (click)="deletePlan()">Yes</button>
+  <button class="no-button" (click)="closeDeletePopup()">No</button>
+</div>
+ 

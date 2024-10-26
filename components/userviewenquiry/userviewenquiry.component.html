@@ -1,0 +1,22 @@
+<div class="container">
+    <h2>User Enquiries</h2>
+    <div>
+        <input type="text" name="fMessage" id="fMessage" placeholder="search" #fMessage (input)="filterByMessage(fMessage.value)">
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <th>S.No</th>
+            <th>Enquiry Message</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of enquiries;index as i">
+                <td>{{i+1}}</td>
+                <td>{{e.message}}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="deleteEnquiry(e.enquiryId)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

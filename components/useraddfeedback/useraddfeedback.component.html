@@ -1,0 +1,25 @@
+<div class="container">
+    <h2>Feedback<span style="color: red;">*</span></h2>
+    <form [formGroup]="addform" (ngSubmit)="addFeedback()">
+        <select name="planNames" id="planNames" [(ngModel)]="planName" formControlName="planName">
+            <option value="" selected="true">Select your applied plan</option>
+            <option value="{{p.savingsPlan.name}}" *ngFor="let p of planApplications" >
+                <div *ngIf="p.status==='Approved'">{{p.savingsPlan.name}}</div>
+                
+            </option>
+        </select>
+        <textarea formControlName="feedbackText" name="feedbackText" id="feedbackText" rows="10" cols="30"></textarea>
+
+        <div *ngIf="feedbackText.invalid && feedbackText.touched">
+            <div *ngIf="feedbackText.errors['required']">
+            <span style="color: red;">Feedback is Required.</span>
+            </div>
+        </div>
+        
+<div>
+    <button type="submit" [disabled]="addform.invalid" class="btn btn-primary">submit</button>
+</div>
+
+
+    </form>
+</div>

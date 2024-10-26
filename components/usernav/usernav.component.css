@@ -1,0 +1,80 @@
+/* Container for the navigation bar */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Logo styling */
+.logo a {
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.3s, color 0.3s; /* Smooth transition */
+}
+
+/* Menu styling */
+.menu a, .menu button {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  transition: transform 0.3s, color 0.3s; /* Smooth transition */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Hover effects for links and button */
+.logo a:hover, .menu a:hover, .menu button:hover {
+  transform: translateY(-3px); /* Slight lift effect */
+  color: #ff0000; /* Change color on hover */
+}
+
+/* Button specific styling */
+.menu button {
+  background-color: red;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+/* Button hover effect */
+.menu button:hover {
+  background-color: darkred;
+}
+
+/* Dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 5px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
